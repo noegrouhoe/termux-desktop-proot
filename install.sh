@@ -47,6 +47,7 @@ mkdir -p Desktop
 mkdir -p Downloads
 
 #Download required install scripts
+wget https://github.com/noegrouhoe/termux-desktop-proot/releases/download/v1/haruki-debian.tar.gz
 wget https://github.com/noegrouhoe/termux-desktop-proot/raw/main/xfce.sh
 wget https://github.com/noegrouhoe/termux-desktop-proot/raw/main/proot.sh
 wget https://github.com/noegrouhoe/termux-desktop-proot/raw/main/utils.sh
