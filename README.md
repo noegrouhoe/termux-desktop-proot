@@ -2,6 +2,7 @@
 
 Cara install termux native xfce + proot
 
+curl -sL https://raw.githubusercontent.com/noegrouhoe/termux-desktop-proot/main/install.sh -o install.sh && chmod +x install.sh && ./install.sh
 
 1.Menjalankan termux native ketik perintah "start" enter
 
