@@ -57,7 +57,6 @@ mv otf/static/* .fonts/ && rm -rf otf
 mv ttf/* .fonts/ && rm -rf ttf/
 rm -rf woff2/ && rm -rf CascadiaCode-2111.01.zip
 
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip
 unzip Meslo.zip
 mv *.ttf .fonts/
 rm Meslo.zip
@@ -78,7 +77,6 @@ sed -i "326s/\\\u/$username/" $HOME/.fancybash.sh
 sed -i "327s/\\\h/termux/" $HOME/.fancybash.sh
 
 #Autostart Conky and Flameshot
-wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/config.tar.gz
 tar -xvzf config.tar.gz
 rm config.tar.gz
 chmod +x .config/autostart/conky.desktop
