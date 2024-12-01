@@ -80,9 +80,6 @@ EOF
 mkdir $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.fonts/
 cp .fonts/NotoColorEmoji-Regular.ttf $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.fonts/ 
 
-#Ssetup Pi-apps
-pd login debian --shared-tmp -- env DISPLAY=:1.0 wget -qO- https://raw.githubusercontent.com/Botspot/pi-apps/master/install | bash
-
 #Setup Hardware Acceleration
 pd login debian --shared-tmp -- env DISPLAY=:1.0 wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/mesa-vulkan-kgsl_24.1.0-devel-20240120_arm64.deb
 pd login debian --shared-tmp -- env DISPLAY=:1.0 sudo apt install -y ./mesa-vulkan-kgsl_24.1.0-devel-20240120_arm64.deb
