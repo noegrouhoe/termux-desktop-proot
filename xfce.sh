@@ -2,7 +2,7 @@
 
 username="$1"
 
-pkgs=('git' 'neofetch' 'virglrenderer-android' 'papirus-icon-theme' 'xfce4' 'xfce4-goodies' 'eza' 'pavucontrol-qt' 'bat' 'jq' 'nala' 'wmctrl' 'firefox' 'netcat-openbsd' 'termux-x11-nightly' 'eza')
+pkgs=('git' 'neofetch' 'virglrenderer-android' 'papirus-icon-theme' 'xfce4' 'xfce4-goodies' 'eza' 'pavucontrol-qt' 'bat' 'jq' 'nala' 'wmctrl' 'firefox' 'chromium' 'vlc' 'netcat-openbsd' 'termux-x11-nightly' 'eza')
 
 #Install xfce4 desktop and additional packages
 pkg install "${pkgs[@]}" -y -o Dpkg::Options::="--force-confold"
@@ -27,19 +27,19 @@ alias list='nala list --upgradeable'
 alias show='nala show'
 " >> $PREFIX/etc/bash.bashrc
 
-#Download Wallpaper
-wget https://raw.githubusercontent.com/phoenixbyrd/Termux_XFCE/main/peakpx.jpg
-wget https://raw.githubusercontent.com/phoenixbyrd/Termux_XFCE/main/dark_waves.png
-mv peakpx.jpg $PREFIX/share/backgrounds/xfce/
-mv dark_waves.png $PREFIX/share/backgrounds/xfce/
+#Install WhiteSur Theme
+wget https://github.com/noegrouhoe/termux-desktop-proot/blob/main/theme.tar.xz
+tar -xf theme.tar.xz
+mv themes/* $PREFIX/share/themes/
+rm -rf themes
+rm theme.tar.xz
 
-#Install WhiteSur-Dark Theme
-wget https://github.com/vinceliuice/WhiteSur-gtk-theme/archive/refs/tags/2023-04-26.zip
-unzip 2023-04-26.zip
-tar -xf WhiteSur-gtk-theme-2023-04-26/release/WhiteSur-Dark-44-0.tar.xz
-mv WhiteSur-Dark/ $PREFIX/share/themes/
-rm -rf WhiteSur*
-rm 2023-04-26.zip
+#Install WhiteSur Theme
+wget https://github.com/noegrouhoe/termux-desktop-proot/releases/download/v2.0/icons.tar.xz
+tar -xf icons.tar.xz
+mv icons/* $PREFIX/share/icons/
+rm -rf icons
+rm icons.tar.xz
 
 #Install Fluent Cursor Icon Theme
 wget https://github.com/vinceliuice/Fluent-icon-theme/archive/refs/tags/2023-02-01.zip
@@ -69,15 +69,6 @@ mv NotoColorEmoji-Regular.ttf .fonts
 wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/font.ttf
 mv font.ttf .termux/font.ttf
 
-#Setup Fancybash Termux
-wget https://raw.githubusercontent.com/phoenixbyrd/Termux_XFCE/main/fancybash.sh
-mv fancybash.sh .fancybash.sh
-echo "source $HOME/.fancybash.sh" >> $PREFIX/etc/bash.bashrc
-sed -i "326s/\\\u/$username/" $HOME/.fancybash.sh
-sed -i "327s/\\\h/termux/" $HOME/.fancybash.sh
-
-#Autostart Conky and Flameshot
-tar -xvzf config.tar.gz
-rm config.tar.gz
-chmod +x .config/autostart/conky.desktop
-chmod +x .config/autostart/org.flameshot.Flameshot.desktop
+#restore config
+tar -xf config.tar.xz
+rm -rf config.tar.xz
