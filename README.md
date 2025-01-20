@@ -6,18 +6,6 @@ curl -sL https://raw.githubusercontent.com/noegrouhoe/termux-desktop-proot/main/
 
 1.Menjalankan termux native ketik perintah "start" enter
 
-2.Cara install wps-ofiice 
-buka terminal 
-masukan perintah dibawah ini
-debian
-export DISPLAY=:1
-pi-apps
-pilih office > wps office > install
+2. untuk masuk ke proot debian ketik di terminal "debian"
 
-3.Untuk menambahkan shortcut di menu 
-buka terminal
-ketik cp2menu
-
-4.Menjalankan aplikasi proot lewat terminal "jika tidak bisa dibuka lewat menu"
-export DISPLAY=:1
-nama_program, subl "contoh saya menjalankan sublime text editor"
+3. untuk menjalankan program proot yang tidak bisa lewat terminal misal sublime_text ketik "subl" lalu enter
