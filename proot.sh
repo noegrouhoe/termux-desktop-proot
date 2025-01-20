@@ -17,24 +17,14 @@ trap finish EXIT
 
 username="$1"
 
-pkgs_proot=('sudo' 'wget' 'nala' 'jq' 'flameshot' 'conky-all')
+pkgs_proot=('sudo' 'wget' 'nala' 'jq' 'flameshot')
 
 #Install Debian proot
-tar -xvf haruki-debian.tar.gz -C /data/data/com.termux/files/home/
-pd restore haruki-debian
+tar -xvf debian.tar.gz -C /data/data/com.termux/files/home/
+pd restore debian
 pd login debian --shared-tmp -- env DISPLAY=:1.0 apt update
 pd login debian --shared-tmp -- env DISPLAY=:1.0 apt upgrade -y
 pd login debian --shared-tmp -- env DISPLAY=:1.0 apt install "${pkgs_proot[@]}" -y -o Dpkg::Options::="--force-confold"
-
-#Create user
-pd login debian --shared-tmp -- env DISPLAY=:1.0 groupadd storage
-pd login debian --shared-tmp -- env DISPLAY=:1.0 groupadd wheel
-pd login debian --shared-tmp -- env DISPLAY=:1.0 useradd -m -g users -G wheel,audio,video,storage -s /bin/bash "$username"
-
-#Add user to sudoers
-chmod u+rw $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/sudoers
-echo "$username ALL=(ALL) NOPASSWD:ALL" | tee -a $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/sudoers > /dev/null
-chmod u-w  $PREFIX/var/lib/proot-distro/installed-rootfs/debian/etc/sudoers
 
 #Set proot DISPLAY
 echo "export DISPLAY=:1.0" >> $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
@@ -58,17 +48,6 @@ alias start='echo please run from termux, not Debian proot.'
 timezone=$(getprop persist.sys.timezone)
 pd login debian --shared-tmp -- env DISPLAY=:1.0 rm /etc/localtime
 pd login debian --shared-tmp -- env DISPLAY=:1.0 cp /usr/share/zoneinfo/$timezone /etc/localtime
-
-#Setup Fancybash Proot
-cp .fancybash.sh $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username
-echo "source ~/.fancybash.sh" >> $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.bashrc
-sed -i '327s/termux/proot/' $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.fancybash.sh
-
-tar -xvzf conky.tar.gz
-rm conky.tar.gz
-mkdir $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.config
-mv .config/conky/ $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.config
-mv .config/neofetch $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.config
 
 #Set theming from xfce to proot
 cp -r $PREFIX/share/icons/dist-dark $PREFIX/var/lib/proot-distro/installed-rootfs/debian/usr/share/icons/dist-dark
