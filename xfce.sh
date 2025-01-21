@@ -2,7 +2,7 @@
 
 username="$1"
 
-pkgs=('git' 'neofetch' 'virglrenderer-android' 'papirus-icon-theme' 'xfce4' 'xfce4-goodies' 'eza' 'pavucontrol-qt' 'bat' 'jq' 'nala' 'wmctrl' 'firefox' 'chromium' 'vlc' 'netcat-openbsd' 'termux-x11-nightly' 'eza')
+pkgs=('git' 'pyqt5' 'pthon3' 'neofetch' 'virglrenderer-android' 'papirus-icon-theme' 'xfce4' 'xfce4-goodies' 'eza' 'pavucontrol-qt' 'bat' 'jq' 'nala' 'wmctrl' 'firefox' 'chromium' 'vlc' 'netcat-openbsd' 'termux-x11-nightly' 'eza')
 
 #Install xfce4 desktop and additional packages
 pkg install "${pkgs[@]}" -y -o Dpkg::Options::="--force-confold"
@@ -68,6 +68,12 @@ mv NotoColorEmoji-Regular.ttf .fonts
 
 wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/font.ttf
 mv font.ttf .termux/font.ttf
+
+#cp2menu
+wget https://github.com/noegrouhoe/termux-desktop-proot/releases/download/v2.0/utils.tar.xz
+tar -xf utils.tar.xz
+chmod +x utils/*.desktop
+mv utils/*.desktop $HOME/Desktop
 
 #restore config
 wget https://github.com/noegrouhoe/termux-desktop-proot/releases/download/v2.0/config.tar.xz
