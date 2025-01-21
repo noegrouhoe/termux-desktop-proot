@@ -28,7 +28,7 @@ alias show='nala show'
 " >> $PREFIX/etc/bash.bashrc
 
 #Install WhiteSur Theme
-wget https://github.com/noegrouhoe/termux-desktop-proot/blob/main/theme.tar.xz
+wget https://github.com/noegrouhoe/termux-desktop-proot/releases/download/v2.0/theme.tar.xz
 tar -xf theme.tar.xz
 mv themes/* $PREFIX/share/themes/
 rm -rf themes
