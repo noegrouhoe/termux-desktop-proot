@@ -74,6 +74,7 @@ wget https://github.com/noegrouhoe/termux-desktop-proot/releases/download/v2.0/u
 tar -xf utils.tar.xz
 chmod +x utils/*.desktop
 mv utils/*.desktop $HOME/Desktop
+rm -r utils.tar.xz
 
 #restore config
 wget https://github.com/noegrouhoe/termux-desktop-proot/releases/download/v2.0/config.tar.xz
