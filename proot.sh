@@ -56,7 +56,6 @@ cat <<'EOF' > $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$usernam
 Xcursor.theme: dist-dark
 EOF
 
-mkdir $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.fonts/
 cp .fonts/NotoColorEmoji-Regular.ttf $PREFIX/var/lib/proot-distro/installed-rootfs/debian/home/$username/.fonts/ 
 
 #Setup Hardware Acceleration
