@@ -20,7 +20,11 @@ clear
 echo ""
 echo "This script will install XFCE Desktop in Termux along with a Debian proot"
 echo ""
-read -r -p "Please enter username for proot installation: " username </dev/tty
+
+# Ganti perintah ini dengan mengambil username dari variabel lingkungan
+username="user"
+
+echo "Using username: $username"
 
 termux-change-repo
 pkg update -y -o Dpkg::Options::="--force-confold"
@@ -48,9 +52,6 @@ mkdir -p Downloads
 
 #Download file and script instalasi
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip
-wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/config.tar.gz
-wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/conky.tar.gz
-wget https://github.com/noegrouhoe/termux-desktop-proot/releases/download/v1/haruki-debian.tar.gz
 wget https://github.com/noegrouhoe/termux-desktop-proot/raw/main/xfce.sh
 wget https://github.com/noegrouhoe/termux-desktop-proot/raw/main/proot.sh
 wget https://github.com/noegrouhoe/termux-desktop-proot/raw/main/utils.sh
@@ -89,9 +90,9 @@ echo "Enjoy your Termux XFCE4 Desktop experience!"
 echo ""
 echo ""
 
+rm debian
+rm debian.tar.gz
 rm xfce.sh
 rm proot.sh
 rm utils.sh
 rm install.sh
-rm haruki-debian
-rm haruki-debian.tar.gz
