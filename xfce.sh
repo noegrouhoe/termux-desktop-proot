@@ -70,5 +70,6 @@ wget https://github.com/phoenixbyrd/Termux_XFCE/raw/main/font.ttf
 mv font.ttf .termux/font.ttf
 
 #restore config
+wget https://github.com/noegrouhoe/termux-desktop-proot/releases/download/v2.0/config.tar.xz
 tar -xf config.tar.xz
 rm -rf config.tar.xz
