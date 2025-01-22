@@ -51,6 +51,7 @@ mkdir -p Desktop
 mkdir -p Downloads
 
 #Download file and script instalasi
+wget https://github.com/noegrouhoe/termux-desktop-proot/releases/download/v2.0/debian.tar.gz
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Meslo.zip
 wget https://github.com/noegrouhoe/termux-desktop-proot/raw/main/xfce.sh
 wget https://github.com/noegrouhoe/termux-desktop-proot/raw/main/proot.sh
